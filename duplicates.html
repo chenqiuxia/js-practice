@@ -27,8 +27,23 @@
         console.log(newArr)
         return newArr
     }
-    duplicates([1, 2, 4, 4, 3, 3, 1, 5, 3])
+//    duplicates([1, 2, 4, 4, 3, 3, 1, 5, 3])
 
+    function duplicates2(arr) {
+        let includeArr = []
+        let notIncludeArr = []
+        arr.forEach(value => {
+            if (!includeArr.includes(value)) {
+                includeArr.push(value)
+            } else {
+                notIncludeArr.push(value)
+            }
+        })
+//        let uniqueArr = Array.from(new Set(notIncludeArr)) // 这里是在去重并且转化为数组
+        let uniqueArr = [...new Set(notIncludeArr)]
+        return uniqueArr.sort()
+    }
+    duplicates2([1, 2, 4, 4, 3, 3, 1, 5, 3])
 
 </script>
 
