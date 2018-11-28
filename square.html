@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>square</title>
+</head>
+<body>
+<h1>求二次方</h1>
+<p>为数组 arr 中的每个元素求二次方。不要直接修改数组 arr，结果返回新的数组</p>
+<p>输入：
+    [1, 2, 3, 4]
+</p>
+<p>
+    输出：
+    [1, 4, 9, 16]
+
+</p>
+<script>
+    let arr = [1, 2, 3, 4]
+    //    1.用Math.pow()函数来实现
+    function pow(arr) {
+        var powArr = []
+        arr.map(value => powArr.push(Math.pow(value, 2)))
+        return powArr
+    }
+//    pow(arr)
+
+    //    2.用自己乘以自己的方式来实现
+    function pow2(arr) {
+        let powArr = []
+        arr.forEach(value => {
+            powArr.push(value * value)
+        })
+        console.log(powArr)
+        return powArr
+    }
+//    pow2(arr)
+
+
+    function pow3(arr) {
+        let powArr = arr.map(value => value * value)
+        console.log(powArr)
+        return powArr
+    }
+    pow3(arr)
+
+</script>
+
+</body>
+</html>
