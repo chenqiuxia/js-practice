@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>duplicates</title>
+</head>
+<body>
+<h1>查找重复元素</h1>
+<p>找出数组 arr 中重复出现过的元素</p>
+<p>输入：
+    [1, 2, 4, 4, 3, 3, 1, 5, 3]
+</p>
+<p>
+    输出：
+    [1, 3, 4]
+
+</p>
+<script>
+    function duplicates(arr) {
+        arr.sort()
+        let newArr = []
+        for (var i =0; i < arr.length; i++) {
+            if (arr[i] === arr[i+1] && newArr.indexOf(arr[i]) <0) {
+                newArr.push(arr[i])
+            }
+        }
+        console.log(newArr)
+        return newArr
+    }
+    duplicates([1, 2, 4, 4, 3, 3, 1, 5, 3])
+
+
+</script>
+
+</body>
+</html>
