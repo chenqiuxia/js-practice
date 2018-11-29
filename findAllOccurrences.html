@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>findAllOccurrences</title>
+</head>
+<body>
+<h1>查找元素位置</h1>
+<p>在数组 arr 中，查找值与 item 相等的元素出现的所有位置</p>
+<p>输入：
+    'abcdefabc'
+</p>
+<p>
+    输出：
+    [0, 6]
+
+</p>
+<script>
+    function findAllOccurrences (arr, target) {
+        let indexArr = []
+        arr.forEach(function (value, index) {
+            if (arr[index] = target) {
+                indexArr.push(index)
+            }
+        })
+        console.log(indexArr)
+        return indexArr
+    }
+    let str = 'abcdefabc'
+    let arr = Array.from(str)
+   findAllOccurrences(arr,'a')
+</script>
+
+</body>
+</html>
