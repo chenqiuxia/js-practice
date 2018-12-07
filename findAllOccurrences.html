@@ -16,19 +16,28 @@
 
 </p>
 <script>
-    function findAllOccurrences (arr, target) {
-        let indexArr = []
+    let str = 'abcdefabc'
+    let arr = Array.from(str)
+    function findAllOccurrences1 (arr, target) {
+        var indexArr = []
         arr.forEach(function (value, index) {
-            if (arr[index] = target) {
+            if (arr[index] === target) {
                 indexArr.push(index)
             }
         })
         console.log(indexArr)
         return indexArr
     }
-    let str = 'abcdefabc'
-    let arr = Array.from(str)
-   findAllOccurrences(arr,'a')
+   findAllOccurrences1(arr,'a')
+    function findAllOccurrences2(arr, target) {
+        return arr.map((value, index) => {
+            if (value === target) {
+                indexArr.push(index)
+            }
+        })
+
+    }
+    findAllOccurrences2(arr,'a')
 </script>
 
 </body>

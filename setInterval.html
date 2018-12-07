@@ -33,12 +33,18 @@
     function count2 (start, end) {
         console.log(start)
         if (start <= end){
-            // console.log(start++)
+            start++
+            var timer = setTimeout(function () {
+                count2(start,end)
+            }, 1000)
+        }
+        return {
+            cancel: function () {
+                clearTimeout(timer)
+            }
         }
     }
-    setInterval(function () {
-        // count2(2,10);
-    }, 1000)
+    count2(3,10)
 
 </script>
 
