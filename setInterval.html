@@ -21,7 +21,7 @@
             } else {
                 clearInterval(timer)
             }
-        }, 1000)
+        }, 1000) // setInterval是满足条件的时候都会执行
 
         return {
             cancel () {
@@ -36,7 +36,7 @@
             start++
             var timer = setTimeout(function () {
                 count2(start,end)
-            }, 1000)
+            }, 1000) // setTimeout只执行一次，所以要用递归的方式来做
         }
         return {
             cancel: function () {
