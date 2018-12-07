@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>fizzbuzz</title>
+</head>
+<body>
+<p>实现 fizzBuzz 函数，参数 num 与返回值的关系如下：<br/>
+    1、如果 num 能同时被 3 和 5 整除，返回字符串 fizzbuzz<br/>
+    2、如果 num 能被 3 整除，返回字符串 fizz<br/>
+    3、如果 num 能被 5 整除，返回字符串 buzz<br/>
+    4、如果参数为空或者不是 num 类型，返回 false<br/>
+    5、其余情况，返回参数 num<br/>
+</p>
+<p>输入：
+    15
+</p>
+<p>输入：
+    fizzbuzz
+</p>
+
+<script>
+    function fizzBuzz(num) {
+        var result
+        
+        if (num % 3 === 0 &&  num % 5 === 0) {
+         result ='fizzbuzz'
+        } else if (num % 3 === 0 && num % 5 !== 0) {
+            result ='fizz'
+        } else if (num % 5 === 0 && num % 3 !== 0) {
+            result ='buzz'
+        } else if (typeof num !== "number" || !num){
+            result = false
+        } else {
+            result = num
+        }
+        console.log(result)
+        return result
+    }
+    fizzBuzz(15)
+    function fizzBuzz2(num) {
+        var time3 = num % 3
+        var time5 = num % 5
+        if (num == null || typeof num !== 'number') {
+            return false
+        }
+        let result = ''
+        if (time3 === 0) {
+            result+= 'fizz'
+        }
+        if (time5 === 0) {
+            result+= 'buzz'
+        }
+        return result || num
+    }
+    console.log(fizzBuzz2(12))
+
+</script>
+
+</body>
+</html>
