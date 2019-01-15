@@ -1,53 +1,26 @@
-export default class  Observer{
-    constructor(value) {
-        this.value = value
-        this.walk(value)
+export default class Watcher {
+    constructor(vm, expOrFn, cb) {
+        this.cb = cb
+        this.vm = vm
+        //此处简化.要区分fuction还是expression,只考虑最简单的expression
+        this.expOrFn = expOrFn
+        this.value = this.get()
     }
-    //递归。。让每个字属性可以observe
-    walk(value){
-        Object.keys(value).forEach(key=>this.convert(key,value[key]))
+    update(){
+        this.run()
     }
-    convert(key, val){
-        defineReactive(this.value, key, val)
-    }
-}
-
-
-export function defineReactive (obj, key, val) {
-    var dep = new Dep()
-    var childOb = observe(val)
-    Object.defineProperty(obj, key, {
-        enumerable: true,
-        configurable: true,
-        get: ()=>val,
-        set:newVal=> {
-            var value =  val
-            if (newVal === value) {
-                return
-            }
-            val = newVal
-            childOb = observe(newVal)
-            dep.notify()
+    run(){
+        const  value = this.get()
+        if(value !==this.value){
+            this.value = value
+            this.cb.call(this.vm)
         }
-    })
-}
-
-
-export function observe (value, vm) {
-    if (!value || typeof value !== 'object') {
-        return
     }
-    return new Observer(value)
-}
-
-export default class Dep {
-    constructor() {
-        this.subs = []
-    }
-    addSub(sub){
-        this.subs.push(sub)
-    }
-    notify(){
-        this.subs.forEach(sub=>sub.update())
+    get(){
+        Dep.target = this
+        //此处简化。。要区分fuction还是expression
+        const value = this.vm._data[this.expOrFn]
+        Dep.target = null
+        return value
     }
 }
